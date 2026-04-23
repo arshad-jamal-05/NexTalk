@@ -100,10 +100,6 @@ export default function Authentication() {
               alignItems: "center",
             }}
           >
-            {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar> */}
-
             <div>
               <Button
                 variant={formState === 0 ? "contained" : ""}

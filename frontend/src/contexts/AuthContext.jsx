@@ -17,17 +17,13 @@ export const AuthProvider = ({ children }) => {
 
   const handleRegister = async (name, username, password) => {
     try {
-      let request = await client.post("/register", {
-        name: name,
-        username: username,
-        password: password,
-      });
+      let request = await client.post("/register", { name: name, username: username, password: password });
 
       if (request.status === httpStatus.CREATED) {
         return request.data.message;
       }
     } catch (err) {
-      throw err; // Errors ko aage pass karna acchi practice hai
+      throw err;
     }
   };
 
@@ -40,11 +36,10 @@ export const AuthProvider = ({ children }) => {
 
       if (request.status === httpStatus.OK) {
         localStorage.setItem("token", request.data.token);
-        // Login ke baad user ko dashboard ya home page par bhej sakte hain
         router('/home');
       }
     } catch (err) {
-      throw err; // Empty catch block se bachein
+      throw err; 
     }
   };
 
@@ -63,17 +58,13 @@ export const AuthProvider = ({ children }) => {
 
   const addToUserHistory = async (meetingCode) => {
     try {
-      let request = await client.post("/add_to_activity", {
-        token: localStorage.getItem("token"),
-        meeting_code: meetingCode,
-      });
+      let request = await client.post("/add_to_activity", { token: localStorage.getItem("token"), meeting_code: meetingCode });
       return request;
     } catch (e) {
       throw e;
     }
   };
 
-  // Data object ko component ke scope mein define karein
   const data = {
     userData,
     setUserData,
@@ -83,6 +74,5 @@ export const AuthProvider = ({ children }) => {
     addToUserHistory,
   };
 
-  // Provider ko component se directly return karein
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

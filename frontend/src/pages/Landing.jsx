@@ -2,7 +2,7 @@ import React from "react";
 // import '../App.css'
 import { Link, useNavigate } from "react-router-dom";
 
-function Landing() {
+export default function Landing() {
   const routeTo = useNavigate();
 
   const generateRoomId = () => {
@@ -20,6 +20,14 @@ function Landing() {
             onClick={() => {
               const roomId = generateRoomId();
               routeTo(`/${roomId}`);
+              // routeTo("/aljk23");
+            }}
+          >
+            Create a Meeting
+          </p>
+          <p
+            onClick={() => {
+              routeTo(`/join`);
             }}
           >
             Join As Guest
@@ -60,5 +68,3 @@ function Landing() {
     </div>
   );
 }
-
-export default Landing;
