@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import { createServer } from "node:http";
 
@@ -21,9 +24,7 @@ app.use(express.urlencoded({limit: "40kb", extended:true}));
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-  const connectionDb = await mongoose.connect(
-    "mongodb+srv://bharatamir4321_db_user:SArwZ0L5jvJsT2to@cluster0.tmz4g64.mongodb.net/"
-  );
+  const connectionDb = await mongoose.connect(process.env.DB_URL);
   // console.log(`DB is connected successfully ${connectionDb.connection.host}`);
   console.log(`DB is connected successfully ✅`);
 
