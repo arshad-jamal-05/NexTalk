@@ -5,8 +5,9 @@ import { TextField, Button, Badge, IconButton } from "@mui/material";
 import { VideocamOff, Videocam, CallEnd, MicOff, Mic, ScreenShare, StopScreenShare, Chat, SpeakerNotesOff, Send } from "@mui/icons-material";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
+import server from "../environment";
 
-const server_url = "http://localhost:8000";
+const server_url = server;
 
 var connections = {};
 
